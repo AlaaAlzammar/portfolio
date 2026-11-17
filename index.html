@@ -3,10 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Alaa Alzammar is a full-stack developer building ASP.NET Core, React, and Flutter applications from database to interface.">
+<meta name="theme-color" content="#12161c">
+<meta name="color-scheme" content="dark">
 <title>Alaa Alzammar — Full-Stack Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #12161c;
@@ -16,17 +19,22 @@
     --text-dim: #8a97a6;
     --accent: #4fa3d1;
     --accent-warm: #e0a955;
+    color-scheme: dark;
+    --s1: 8px; --s2: 16px; --s3: 24px; --s4: 32px; --s6: 48px; --s8: 64px; --s12: 96px;
+    --fs-xs: 13px; --fs-sm: 14px; --fs-md: 16px; --fs-lg: 20px;
     padding-top: env(safe-area-inset-top, 0px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
     box-sizing: border-box;
   }
   * { box-sizing: border-box; }
-  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
   body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
-    font-family: 'Manrope', -apple-system, sans-serif;
+    font-family: 'Bricolage Grotesque', Georgia, sans-serif;
+    font-weight: 300;
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
   }
@@ -47,7 +55,7 @@
   .topbar {
     max-width: 920px;
     margin: 0 auto;
-    padding: 16px 28px;
+    padding: var(--s1) 28px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -62,9 +70,15 @@
   }
   nav a:hover { color: var(--text); }
 
+  a, .btn { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+  nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; }
+  .skip { position: absolute; left: 16px; top: -64px; z-index: 20; background: var(--accent); color: #0c1116; padding: 10px 16px; border-radius: 4px; font-weight: 600; text-decoration: none; }
+  .skip:focus { top: calc(env(safe-area-inset-top, 0px) + 12px); }
+
   /* Hero */
   .hero {
-    padding: 92px 0 64px;
+    padding: var(--s12) 0 var(--s8);
     border-bottom: 1px solid var(--line);
   }
   .hero-tag {
@@ -74,16 +88,18 @@
     margin: 0 0 18px;
   }
   .hero h1 {
-    font-size: clamp(34px, 5.5vw, 54px);
-    line-height: 1.12;
-    margin: 0 0 20px;
+    font-size: clamp(40px, 8vw, 84px);
+    line-height: 1.02;
+    margin: 0 0 24px;
     font-weight: 800;
-    letter-spacing: -0.01em;
-    max-width: 14ch;
+    letter-spacing: -0.035em;
+    max-width: 15ch;
+    text-wrap: balance;
   }
   .hero p {
     color: var(--text-dim);
-    font-size: 18px;
+    font-size: var(--fs-lg);
+    font-weight: 300;
     max-width: 54ch;
     margin: 0 0 28px;
   }
@@ -103,68 +119,80 @@
   .btn.primary:hover { background: #66b2db; }
   .btn:not(.primary):hover { border-color: var(--accent); color: var(--accent); }
 
-  section { padding: 64px 0; border-bottom: 1px solid var(--line); }
+  section { padding: var(--s8) 0; border-bottom: 1px solid var(--line); }
   section:last-of-type { border-bottom: none; }
   .label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
+    font-size: var(--fs-xs);
+    letter-spacing: 0.04em;
     color: var(--text-dim);
-    margin: 0 0 14px;
+    margin: 0 0 var(--s2);
   }
   h2 {
-    font-size: 26px;
-    margin: 0 0 22px;
-    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin: 0 0 24px;
+    font-weight: 200;
   }
   .about p { color: var(--text-dim); max-width: 62ch; font-size: 16px; }
-  .about strong { color: var(--text); font-weight: 600; }
+  .about strong { color: var(--text); font-weight: 700; }
 
-  .stack-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 22px; margin-top: 8px; }
+  .stack-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--s3); margin-top: var(--s3); }
   .stack-group .g-title { font-size: 13px; color: var(--accent-warm); font-family: 'JetBrains Mono', monospace; margin-bottom: 10px; }
-  .stack-group ul { list-style: none; padding: 0; margin: 0; color: var(--text); font-size: 15px; }
+  .stack-group ul { list-style: none; padding: 0; margin: 0; color: var(--text); font-size: var(--fs-md); }
   .stack-group li { padding: 3px 0; color: var(--text-dim); }
 
   .project {
+    display: flex;
+    flex-direction: column;
     border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 26px 28px;
-    margin-bottom: 20px;
+    border-radius: 8px;
+    padding: var(--s3) var(--s4);
     background: var(--bg-panel);
   }
-  .project:last-child { margin-bottom: 0; }
+  .project.featured { border-left: 3px solid var(--accent); padding: var(--s4) var(--s4); margin-bottom: var(--s3); }
+  .project.featured p { max-width: 68ch; }
+  .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s3); }
   .project-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-  .project h3 { margin: 0; font-size: 19px; font-weight: 700; }
-  .project .tags { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: var(--accent); }
-  .project p { color: var(--text-dim); font-size: 15px; margin: 12px 0 16px; max-width: 62ch; }
+  .project h3 { margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
+  .project .tags { font-family: 'JetBrains Mono', monospace; font-size: var(--fs-xs); color: var(--accent); }
+  .project p { color: var(--text-dim); font-size: var(--fs-md); font-weight: 300; margin: var(--s2) 0 var(--s3); flex: 1; }
+  .project-links { display: flex; flex-wrap: wrap; gap: var(--s3); }
   .project-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     color: var(--text);
-    text-decoration: none;
-    font-size: 14px;
-    margin-right: 18px;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 1px;
+    font-size: var(--fs-sm);
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+    text-underline-offset: 6px;
   }
-  .project-links a:hover { border-color: var(--accent); color: var(--accent); }
+  .project-links a:hover { text-decoration-color: var(--accent); color: var(--accent); }
 
   footer { padding: 48px 0 64px; }
   footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
   footer p { color: var(--text-dim); font-size: 14px; margin: 0; }
-  footer .links a { color: var(--text-dim); text-decoration: none; font-size: 14px; margin-left: 18px; }
+  footer .links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--text-dim); text-decoration: none; font-size: var(--fs-sm); margin-left: var(--s2); }
   footer .links a:hover { color: var(--accent); }
 
   @media (max-width: 640px) {
     nav a { margin-left: 14px; font-size: 13px; }
     .hero { padding: 64px 0 48px; }
-    section { padding: 44px 0; }
+    section { padding: var(--s6) 0; }
+    .project-grid { grid-template-columns: 1fr; }
+    .project, .project.featured { padding: var(--s3); }
   }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="top">
   <div class="topbar">
     <a class="brand" href="#top">alaa<span>.</span>dev</a>
-    <nav>
+    <nav aria-label="Primary">
       <a href="#about">About</a>
       <a href="#work">Work</a>
       <a href="#contact">Contact</a>
@@ -172,11 +200,11 @@
   </div>
 </header>
 
-<div class="wrap">
+<main id="main" class="wrap">
   <section class="hero" id="top">
     <p class="hero-tag mono">Gaza, Palestine — Full-Stack Developer</p>
     <h1>Building end-to-end software, from database to interface.</h1>
-    <p>I'm Alaa Alzammar, a final-year Software Development &amp; Databases student building complete applications across backend, frontend, and mobile.</p>
+    <p>I’m Alaa Alzammar, a final-year Software Development &amp; Databases student building complete applications across backend, frontend, and mobile.</p>
     <div class="hero-links">
       <a class="btn primary" href="#work">See my work</a>
       <a class="btn" href="https://github.com/AlaaAlzammar">GitHub</a>
@@ -187,7 +215,7 @@
   <section class="about" id="about">
     <p class="label mono">// about</p>
     <h2>Background</h2>
-    <p>I'm a final-year <strong>Software Development &amp; Databases</strong> student at GTC, focused on building complete software solutions — robust backends, clean interfaces, and mobile apps that work together as one system. I work mainly in <strong>ASP.NET Core</strong> and <strong>React</strong>, with <strong>Flutter</strong> for mobile, and I'm currently extending into AI and machine learning fundamentals.</p>
+    <p>I’m a final-year <strong>Software Development &amp; Databases</strong> student at GTC, focused on building complete software solutions — robust backends, clean interfaces, and mobile apps that work together as one system. I work mainly in <strong>ASP.NET Core</strong> and <strong>React</strong>, with <strong>Flutter</strong> for mobile, and I’m currently extending into AI and machine learning fundamentals.</p>
 
     <div class="stack-groups">
       <div class="stack-group">
@@ -209,17 +237,19 @@
     <p class="label mono">// selected work</p>
     <h2>Projects</h2>
 
-    <div class="project">
+    <div class="project featured">
       <div class="project-head">
         <h3>Spaceara</h3>
         <span class="tags mono">ASP.NET Core · EF Core · SQL Server</span>
       </div>
-      <p>My graduation project — a smart field-training management platform connecting students, universities, and training institutions on one system. Built with ASP.NET Core Razor Pages, EF Core, and ASP.NET Identity, with role-based access covering applications, placements, attendance, reports, and evaluations.</p>
+      <p>Graduation project (team of eight) — a field-training management platform that replaces paper-based processes with one system for students, universities, and training institutions. It covers the full lifecycle: opportunities, multi-step application approvals, placements, attendance, reports, evaluations, and field visits, with six-role access control and email/OTP verification. Built on ASP.NET Core Razor Pages (.NET 10), EF Core, ASP.NET Identity, SQL Server, and Bootstrap 5.</p>
       <div class="project-links">
-        <a href="https://github.com/AlaaAlzammar/Project">GitHub ↗</a>
+        <a href="https://spaceara.runasp.net/" aria-label="Spaceara live demo">Live demo <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/AlaaAlzammar/Project" aria-label="Spaceara on GitHub">GitHub <span aria-hidden="true">↗</span></a>
       </div>
     </div>
 
+    <div class="project-grid">
     <div class="project">
       <div class="project-head">
         <h3>Internship Management API &amp; Platform</h3>
@@ -227,8 +257,19 @@
       </div>
       <p>A full-stack platform for managing student internships end to end, from application to placement tracking. Built with an ASP.NET Core Web API backend on a SQL Server database, exposing the endpoints that power the whole system.</p>
       <div class="project-links">
-        <a href="https://internships-platform-zeta.vercel.app/">Live demo ↗</a>
-        <a href="https://github.com/AlaaAlzammar">GitHub ↗</a>
+        <a href="https://internships-platform-zeta.vercel.app/" aria-label="Internship Management API and Platform live demo">Live demo <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/AlaaAlzammar" aria-label="Internship Management API and Platform on GitHub">GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>TaskApi</h3>
+        <span class="tags mono">REST API</span>
+      </div>
+      <p>A task-management REST API for creating, updating, and organizing tasks through clean HTTP endpoints.</p>
+      <div class="project-links">
+        <a href="https://github.com/AlaaAlzammar/TaskApi" aria-label="TaskApi on GitHub">GitHub <span aria-hidden="true">↗</span></a>
       </div>
     </div>
 
@@ -239,7 +280,7 @@
       </div>
       <p>A mobile food-ordering app built with Flutter, focused on a smooth, native-feeling browsing and ordering experience.</p>
       <div class="project-links">
-        <a href="https://github.com/AlaaAlzammar/FoodGo">GitHub ↗</a>
+        <a href="https://github.com/AlaaAlzammar/FoodGo" aria-label="FoodGo on GitHub">GitHub <span aria-hidden="true">↗</span></a>
       </div>
     </div>
 
@@ -250,22 +291,23 @@
       </div>
       <p>A fully responsive food-subscription landing page — from hero section to pricing and sign-up — built with hand-crafted HTML and CSS and a mobile-first layout.</p>
       <div class="project-links">
-        <a href="https://omnifood-peach-omega.vercel.app/">Live demo ↗</a>
-        <a href="https://github.com/AlaaAlzammar">GitHub ↗</a>
+        <a href="https://omnifood-peach-omega.vercel.app/" aria-label="Omnifood live demo">Live demo <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/AlaaAlzammar" aria-label="Omnifood on GitHub">GitHub <span aria-hidden="true">↗</span></a>
       </div>
+    </div>
     </div>
   </section>
 
   <section id="contact">
     <p class="label mono">// get in touch</p>
-    <h2>Let's work together</h2>
+    <h2>Let’s work together</h2>
     <p style="color:var(--text-dim); max-width:56ch; font-size:16px;">Open to full-stack roles, internships, and freelance projects. Reach out on LinkedIn or check my code on GitHub.</p>
     <div class="hero-links" style="margin-top:22px;">
       <a class="btn primary" href="https://www.linkedin.com/in/alaa-alzammar-623b07403/">Message me on LinkedIn</a>
       <a class="btn" href="https://github.com/AlaaAlzammar">View GitHub</a>
     </div>
   </section>
-</div>
+</main>
 
 <footer>
   <div class="wrap">
